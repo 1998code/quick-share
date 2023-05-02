@@ -83,7 +83,7 @@ export default function Index() {
               >
                 Share to frineds:
                 <br />
-                <a href={'/preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')} target="_blank" className="text-xs block">{'/preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')}</a>
+                <a href={'/preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')} target="_blank" className="text-xs block">{window.location + 'preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')}</a>
                 <hr class="relative my-3 opacity-50" />
                 Direct Download / Embed to your website:
                 <br />
