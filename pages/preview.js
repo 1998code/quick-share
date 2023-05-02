@@ -6,17 +6,18 @@ export default function Preview() {
   const url = 'https://public.blob.vercel-storage.com/' + useRouter().query.q;
 
   return (
-    <main class="w-screen h-screen">
+    <main className="w-screen h-screen">
       {/* if is image */}
-      {url && url.includes('.jpeg') && (
+      {url && (url.includes('.jpeg') || url.includes('.jpg') || url.includes('.png'))
+      && (
         <img src={url} className="w-full mx-auto rounded-xl hover:scale-105 transition-all" />
       )}
       {/* if is audio */}
-      {url && url.includes('data:audio') && (
+      {url && (url.includes('.mp3') || url.includes('.wav') || url.includes('.ogg')) && (
         <audio src={url} controls className="w-full mx-auto rounded-xl hover:scale-105 transition-all" />
       )}
       {/* if is video */}
-      {url && url.includes('data:video') && (
+      {url && (url.includes('.mp4') || url.includes('.webm') || url.includes('.ogg')) && (
         <video src={url} controls className="w-full mx-auto rounded-xl hover:scale-105 transition-all" />
       )}
       
