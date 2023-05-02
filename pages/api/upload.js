@@ -1,6 +1,9 @@
-import * as vercelBlob from '@vercel/blob';
+import { put } from '@vercel/blob';
+import { NextResponse } from 'next/server';
 
-export async function POST(request) {
+export const config = { runtime: 'edge' };
+
+export default async function POST(request) {
   const form = await request.formData();
   const file = form.get('file');
 
@@ -11,7 +14,7 @@ export async function POST(request) {
     );
   }
 
-  const blob = await vercelBlob.put(file.name, file, { access: 'public' });
+  const blob = await put(file.name, file, { access: 'public' });
 
-  return NextResponse.json(blob);
+  return NextResponse.json({url: blob.url});
 }
