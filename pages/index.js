@@ -6,8 +6,6 @@ export default function Index() {
 
   const [base64, setBase64] = useState(null);
 
-  // watch id file change and convert to base64
-  // const handleFileChange = (event) => {
   const handleFileChange = async (event) => {
     event.preventDefault();
 
@@ -21,7 +19,6 @@ export default function Index() {
       setBase64(base64String);
     };
 
-    // use formData and get back blob
     const formData = new FormData();
     formData.append('file', file);
 
@@ -29,9 +26,13 @@ export default function Index() {
       method: 'POST',
       body: formData,
     });
-    const blob = await response.json();
+    const blob = await response.json()
+    .catch((error) => {
+      alert('Error: ' + error);
+      window.location.reload();
+    });
+
     setBlob(blob);
-    
   };
 
   return (
@@ -39,20 +40,7 @@ export default function Index() {
      
       <form
         id="form"
-        action="/api/upload"
-        method="POST"
         encType="multipart/form-data"
-        onSubmit={async (event) => {
-          event.preventDefault();
-
-          const formData = new FormData(event.currentTarget);
-          const response = await fetch('/api/upload', {
-            method: 'POST',
-            body: formData,
-          });
-          const blob = await response.json();
-          setBlob(blob);
-        }}
         className="max-w-lg lg:max-w-2xl mx-auto h-screen flex flex-col justify-center space-y-6"
       >
         <div>
