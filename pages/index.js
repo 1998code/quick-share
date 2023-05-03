@@ -9,11 +9,13 @@ export default function Index() {
   const [base64, setBase64] = useState(null);
 
   const handleFileChange = async (event) => {
-    setLoading(true);
-
     event.preventDefault();
 
     const file = event.target.files[0];
+    if (!file) return;
+
+    setLoading(true);
+    
     const reader = new FileReader();
     reader.readAsDataURL(file);
     
