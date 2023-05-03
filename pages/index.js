@@ -1,7 +1,31 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Index() {
+  const randomBG = () => {
+    const bgList = [
+      "beach.jpg",
+      "ice.jpg",
+      "tokyo_night.jpg",
+      "mirage.jpg"
+    ]
+    return bgList[Math.floor(Math.random() * bgList.length)];
+  }
+
+  // Update background image every 30s
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Fade in and out
+      document.getElementById("bg").classList.add("opacity-0");
+      setTimeout(() => {
+        document.getElementById("bg").classList.remove("opacity-0");
+      }, 1000);
+
+      document.getElementById("bg").src = randomBG();
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
   const [loading, setLoading] = useState(false);
 
   const [blob, setBlob] = useState(null);
@@ -47,12 +71,12 @@ export default function Index() {
   };
 
   return (
-    <main className="w-screen h-screen text-white">
+    <main className="relative w-screen h-screen text-white bg-black">
      
       <form
         id="form"
         encType="multipart/form-data"
-        className="max-w-lg lg:max-w-2xl mx-auto h-screen flex flex-col justify-center space-y-6"
+        className="relative max-w-lg lg:max-w-2xl mx-auto h-screen flex flex-col justify-center space-y-6 z-[2]"
       >
         <div>
           <h1 className="text-4xl font-black">Quick Share</h1>
@@ -114,7 +138,8 @@ export default function Index() {
 
       </form>
 
-      <img src="bg.jpg" className={`fixed top-0 w-full h-full -z-[1] object-cover filter ${base64 ? 'brightness-[0.1]' : 'brightness-50'} transition-all`} />
+      <img id="bg" src={ randomBG() } className={`fixed top-0 w-full h-full z-[1] object-cover filter ${base64 ? 'brightness-[0.1]' : 'brightness-50'} duration-1000 transition-all`} />
+    
     </main>
   );
 }
