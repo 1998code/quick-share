@@ -38,6 +38,9 @@ export default function Index() {
 
     setBlob(blob);
 
+    // Copy URL to clipboard
+    navigator.clipboard.writeText(blob.url);
+
     setLoading(false);
   };
 
@@ -62,15 +65,15 @@ export default function Index() {
               {/* Remote Preview if it is img / audio / video */}
               {/* if is image */}
               {base64 && base64.includes('data:image') && (
-                <img src={blob.url} className="mx-auto rounded-xl max-h-[50vh] hover:scale-105 transition-all" />
+                <img src={blob.url} className="rounded-xl max-h-[50vh] hover:scale-105 transition-all" />
               )}
               {/* if is audio */}
               {base64 && base64.includes('data:audio') && (
-                <audio src={blob.url} controls className="mx-auto rounded-xl max-h-[50vh] hover:scale-105 transition-all" />
+                <audio src={blob.url} controls className="rounded-xl max-h-[50vh] hover:scale-105 transition-all" />
               )}
               {/* if is video */}
               {base64 && base64.includes('data:video') && (
-                <video src={blob.url} controls className="mx-auto rounded-xl max-h-[50vh] hover:scale-105 transition-all" />
+                <video src={blob.url} controls className="rounded-xl max-h-[50vh] hover:scale-105 transition-all" />
               )}
               <div
                 className="rounded-xl bg-black text-sm p-5 font-semibold shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
@@ -88,15 +91,15 @@ export default function Index() {
             {/* Local Preview if it is img / audio / video */}
             {/* if is image */}
             {base64 && base64.includes('data:image') && (
-              <img src={base64} className="mx-auto rounded-xl hover:scale-105 max-h-[50vh] transition-all" />
+              <img src={base64} className="rounded-xl hover:scale-105 max-h-[50vh] transition-all" />
             )}
             {/* if is audio */}
             {base64 && base64.includes('data:audio') && (
-              <audio src={base64} controls className="mx-auto rounded-xl hover:scale-105 max-h-[50vh] transition-all" />
+              <audio src={base64} controls className="rounded-xl hover:scale-105 max-h-[50vh] transition-all" />
             )}
             {/* if is video */}
             {base64 && base64.includes('data:video') && (
-              <video src={base64} controls className="mx-auto rounded-xl hover:scale-105 max-h-[50vh] transition-all" />
+              <video src={base64} controls className="rounded-xl hover:scale-105 max-h-[50vh] transition-all" />
             )}
 
             {loading && (
