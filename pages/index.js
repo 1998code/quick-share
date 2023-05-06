@@ -76,7 +76,7 @@ export default function Index() {
       <form
         id="form"
         encType="multipart/form-data"
-        className="relative max-w-lg lg:max-w-2xl mx-auto h-screen flex flex-col justify-center space-y-6 z-[2]"
+        className="relative max-w-lg lg:max-w-2xl mx-auto h-screen flex flex-col justify-center space-y-6 z-[2] p-3"
       >
         <div>
           <h1 className="text-4xl font-black">Quick Share</h1>
@@ -102,15 +102,17 @@ export default function Index() {
                 <video src={blob.url} controls className="rounded-xl max-h-[50vh] hover:scale-105 transition-all" />
               )}
               <div
-                className="rounded-xl bg-black text-sm p-5 font-semibold shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                className="rounded-xl bg-black text-sm p-5 font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
               >
                 Share to frineds:
                 <br />
-                <a href={'/preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')} target="_blank" className="text-xs block">{window.location + 'preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')}</a>
+                <a href={'/preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')} target="_blank" className="text-xs block text-teal-400 hover:text-teal-600 transition-all">{window.location + 'preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')}</a>
                 <hr className="relative my-3 opacity-50" />
                 Direct Download / Embed to your website:
                 <br />
-                <a href={blob.url} target="_blank" className="text-xs">{blob.url}</a>
+                <a href={blob.url} target="_blank" className="text-xs text-blue-400 hover:text-blue-600 transition-all">{blob.url}</a>
+                <br />
+                <span class="text-xs italic text-gray-600">🎯 Auto copied to your clipboard [Permission required]</span>
               </div>
             </>
           ) : (<>
