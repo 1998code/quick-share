@@ -78,12 +78,12 @@ export default function Index() {
         encType="multipart/form-data"
         className="relative max-w-lg lg:max-w-2xl mx-auto h-screen flex flex-col justify-center space-y-6 z-[2] p-3"
       >
-        <div>
+        <div className="pl-3">
           <h1 className="text-4xl font-black">Quick Share</h1>
           <h2 className="text-3xl font-bold">All formats accepted.</h2>
         </div>
 
-        <input type="file" name="file" id="file" onChange={handleFileChange} />
+        <input type="file" name="file" id="file" className="pl-3" onChange={handleFileChange} />
 
         {
           !loading && blob ? (
