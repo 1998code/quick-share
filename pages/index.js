@@ -104,7 +104,7 @@ export default function Index() {
               <div
                 className="rounded-xl bg-black text-sm p-5 font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
               >
-                Share to frineds:
+                Share Preview to friends:
                 <br />
                 <a href={'/preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')} target="_blank" className="text-xs block text-teal-400 hover:text-teal-600 transition-all">{window.location + 'preview?q=' + blob.url.replace('https://public.blob.vercel-storage.com/', '')}</a>
                 <hr className="relative my-3 opacity-50" />
