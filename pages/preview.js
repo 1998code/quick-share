@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 export default function Preview() {
 
-  const url = 'https://public.blob.vercel-storage.com/' + useRouter().query.q;
+  const url = useRouter().query.q;
 
   return (
     <main className="w-screen h-screen bg-black">
